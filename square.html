@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var xspeed = 1;
+		var yspeed = 1;
+		var x = 100;
+		var y=100;
+		var counter=0;
+		var color=["black","blue","green","yellow","grey","white"];
+		function start()
+		{
+			document.getElementById("inner").style.left = x+"px";
+			document.getElementById("inner").style.top = y+"px";
+			
+			
+			
+
+			increment();
+			
+		}
+		function increment()
+		{
+			x = x +xspeed;
+			y= y+ yspeed;
+			if((x+100 > 1000)||(x<7))
+			{
+				xspeed = xspeed*-1;
+				counter++;
+				document.getElementById('output').innerHTML = counter;
+				var randomElement = color[Math.floor(Math.random() * color.length)];
+				document.getElementById("inner").style.background= randomElement;
+
+			}
+			if((y+100 > 800)||(y<7))
+			{
+				yspeed = yspeed*-1;
+				counter++;
+				document.getElementById('output').innerHTML = counter;
+				var randomElement = color[Math.floor(Math.random() * color.length)];
+				document.getElementById("inner").style.background= randomElement;
+			}
+			
+		}
+		function now()
+		{
+			setInterval(start,10);
+		}
+		
+	
+	</script>
+</head>
+<body onload="now()">
+	<div id="outer" style="height:800px; width:1000px; border:1px solid black;">
+<div id="inner" style="height: 100px; width: 100px; position: absolute; border:1px solid black;  "></div>
+</div>
+<button onclick="now()" >as</button>
+<output id="output" height="10px" width="10px"></output>
+</body>
+</html>
